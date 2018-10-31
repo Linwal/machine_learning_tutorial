@@ -18,11 +18,11 @@ dataset_filepath = r'C:\Users\walkerl\Documents\ML_tutorial\iris.csv'
 names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
 dataset = pd.read_csv(dataset_filepath, names=names)
 
-# print(dataset.groupby('class').size())
-# dataset.plot(kind='box', subplots=True, layout=(2,2), sharex=True, sharey=True)
-# dataset.hist(sharex=True, sharey=True)
-# scatter_matrix(dataset)
-# plt.show()
+print(dataset.groupby('class').size())
+dataset.plot(kind='box', subplots=True, layout=(2,2), sharex=True, sharey=True)
+dataset.hist(sharex=True, sharey=True)
+scatter_matrix(dataset)
+plt.show()
 
 # Split the dataset in 20/80
 X = dataset.values[:,0:4]
@@ -51,6 +51,7 @@ for model_name, model in models:
     results.append(cv_results)
     names.append(model_name)
     msg = "%s: %f (%f)" % (model_name, cv_results.mean(), cv_results.std())
+    print(msg)
 
 # Make predictions on validatoin dataset
 
